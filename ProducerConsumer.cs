@@ -29,8 +29,10 @@ namespace BackendExam
             {
                 while (!i_Token.IsCancellationRequested)
                 {
-                    //TODO: Implement
-                    //Call DecodeData Method
+                    if (DataQueue.TryDequeue(out var dataItem))
+                    {
+                        DecodeData(dataItem.Data);
+                    }
                 }
             }, i_Token);
         }
